@@ -2,6 +2,22 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default function Edit() {
   return (
+
+    // <View>
+    //   <Container>
+    //     <Box>
+    //       <View>
+    //         <Input label='Carregamento' value={carregamento} setValue={setCarregamento} />
+    //         <Input label='Cidades' value={cidade} setValue={setCidade} />
+    //         <Input label='Valor do Frete' value={valor} setValue={setValor} />
+    //         <Input label='Data da Entrega' value={dataEntrega} setValue={setDataEntrega} />
+    //         <Input label='Observações' value={observacao} setValue={setObservacao} />
+    //       </View>
+    //       <Button label="Salvar" func={handleSave} />
+    //     </Box>
+    //   </Container>
+    // </View>
+
     <View
       style={{
         flex: 1,
@@ -11,6 +27,8 @@ export default function Edit() {
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
     </View>
+
+
   );
 }
 
