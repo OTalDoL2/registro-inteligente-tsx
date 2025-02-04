@@ -1,8 +1,6 @@
-import { Tabs, useNavigation } from "expo-router";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-export default function Home() {
-  const navigation = useNavigation();
+export default function Edit() {
   return (
     <View
       style={{
@@ -12,11 +10,6 @@ export default function Home() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Text>
-            Go to Details
-          </Text>
-        </TouchableOpacity>
     </View>
   );
 }
@@ -39,3 +32,4 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
+
