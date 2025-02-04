@@ -33,6 +33,8 @@ export default function RootLayout() {
       <ThemeProvider value={DefaultTheme}>
         <Stack>
           <Stack.Screen name="Home" />
+          <Stack.Screen name="Edit" />
+          <Stack.Screen name="Register" />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />

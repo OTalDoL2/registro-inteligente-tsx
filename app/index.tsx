@@ -1,8 +1,9 @@
-import { Tabs, useNavigation } from "expo-router";
+import {  Tabs, useNavigation, useRouter } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Home() {
   const navigation = useNavigation();
+  const router = useRouter()
   return (
     <View
       style={{
@@ -12,7 +13,7 @@ export default function Home() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity onPress={() => router.push('/register')}>
           <Text>
             Go to Details
           </Text>
