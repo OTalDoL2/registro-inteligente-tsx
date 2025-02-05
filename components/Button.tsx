@@ -4,13 +4,14 @@ import styled from "styled-components/native";
 
 interface Props {
     label: string; // Texto do botão
+    func: () => void; // tipagem utilizada para funções
     buttonType?: boolean; // Propriedade opcional para definir o tipo do botão
 }
 
-export default function Button({ label, buttonType }: Props) {
+export default function Button({ label, func, buttonType }: Props) {
     return (
         <View>
-            <ButtonComponent primary={buttonType}>
+            <ButtonComponent primary={buttonType} onPress={func}>
                 <Label>
                     {label}
                 </Label>
@@ -27,7 +28,7 @@ const ButtonComponent = styled.TouchableOpacity<Props>`
     backgroundColor: blue;
     justifyContent: center;
     borderRadius: 5px;
-    marginLeft: ${(props: Props) => (props.buttonType ? '150' : '0')};
+    marginLeft: ${(props: Props) => (props.buttonType ? '0' : '150')};
 `
 
 const Label = styled.Text`

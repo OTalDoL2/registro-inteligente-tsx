@@ -1,11 +1,13 @@
 import { useRouter } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import styled from 'styled-components/native';
+import Button from "@/components/Button";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const router = useRouter()
-  const registro: any = [];
-  const item: any = [];
+  // const { registro } = useSelector((rootReducer) => rootReducer.registroReducer);
+  const { registro } = useSelector((appReducer : any) => appReducer.register);
   return (
 
     <Container>
@@ -17,13 +19,7 @@ export default function Home() {
             <Card item={item} />
           )}
         /> */}
-        <TouchableOpacity onPress={() => router.push('/register')}>
-          <Text>
-            Registrar
-          </Text>
-        </TouchableOpacity>
-
-        {/* <Button label="Novo Registro" router.push('/register')} optionalStyle={{ marginLeft: 150 }} /> */}
+        <Button label="Registrar" func={() => router.push('/register')} buttonType />
       </Box>
     </Container>
 
@@ -46,40 +42,6 @@ export default function Home() {
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'aliceblue',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  // box: {
-  //   width: 300;
-  //   height: 500;
-  //   alignItems: center;
-  //   justifyContent: center,
-  //   justifyContent: space-around,
-  // }
-
-
-
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
 
 const Container = styled.View`
   flex: 1;
@@ -91,11 +53,6 @@ const Container = styled.View`
 const Box = styled.View`
   width: 300;
   height: 600;
-`;
-
-const Input = styled.TextInput`
-  background-color: #c2c4c2;
-  border: 1px solid black;
 `;
 
 

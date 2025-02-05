@@ -5,6 +5,8 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import store from '@/store';
+import { Provider } from 'react-redux';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,6 +32,7 @@ export default function RootLayout() {
 
 
   return (
+    <Provider store={store}>
       <ThemeProvider value={DefaultTheme}>
         <Stack>
           <Stack.Screen name="Home" />
@@ -39,5 +42,6 @@ export default function RootLayout() {
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>
-    );
+    </Provider>
+  );
 }
