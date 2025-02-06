@@ -1,3 +1,3 @@
-import registerAction from './register';
+import recordAction from './record';
 
-export { registerAction };
+export { recordAction };

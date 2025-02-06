@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import register from './register';
+import record from './record';
 
 
 const appReducer = combineReducers({
-    register,
+    record,
 });
 
 export default appReducer;

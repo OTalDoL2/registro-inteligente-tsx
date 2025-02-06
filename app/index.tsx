@@ -14,7 +14,7 @@ export default function Home() {
       <Box>
         {/* <List
           data={registro}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item : any) => item.id.toString()}
           renderItem={({ item }) => (
             <Card item={item} />
           )}
