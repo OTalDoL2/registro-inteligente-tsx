@@ -1,5 +1,4 @@
 import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from "expo-router";
 import { useColorScheme } from 'react-native';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -7,8 +6,17 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import store from '@/store';
 import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './index';
+import Edit from './edit';
+import Register from './register';
+import { RootStackParamList } from './RootStackParamList';
 
 SplashScreen.preventAutoHideAsync();
+
+const Stack = createStackNavigator<RootStackParamList>();
+
 
 export default function RootLayout() {
   // Set Esquema de Cores 
@@ -30,18 +38,17 @@ export default function RootLayout() {
     return null;
   }
 
-
   return (
     <Provider store={store}>
       <ThemeProvider value={DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="Home" />
-          <Stack.Screen name="Edit" />
-          <Stack.Screen name="Register" />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <StatusBar style="auto" />
+       
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Edit" component={Edit} />
+            <Stack.Screen name="Register" component={Register} />
+          </Stack.Navigator>
       </ThemeProvider>
+      <StatusBar style="auto" />
     </Provider>
   );
 }

@@ -1,6 +1,20 @@
 import { StyleSheet, Text, View } from "react-native";
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from "./RootStackParamList";
+
+interface Props{
+  route: any,
+  navigation: any
+}
+
+type EditScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Edit'>;
+type EditScreenRouteProp = RouteProp<RootStackParamList, 'Edit'>;
 
 export default function Edit() {
+  const navigation = useNavigation<EditScreenNavigationProp>();
+  const route = useRoute<EditScreenRouteProp>();
+
   return (
 
     // <View>

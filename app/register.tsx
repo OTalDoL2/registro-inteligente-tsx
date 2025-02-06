@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { AppState } from "@/store";
 import { recordAction } from "@/store/actions";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -26,6 +27,7 @@ export default function Register() {
   }
 
   const showData = () => {
+    console.log(useSelector((state: AppState) => state.record))
     console.log(dispatch(recordAction.readRecords()))
   }
 

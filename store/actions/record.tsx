@@ -5,11 +5,17 @@ const setRecord = (payload: any) => ({
     payload,
 });
 
+const removeRecord = (payload: any) => ({
+    type: RECORD.REMOVE,
+    payload,
+});
+
 const readRecords = () => ({
     type: RECORD.READ,
 });
 
 export default {
     setRecord,
-    readRecords
+    readRecords,
+    removeRecord
 };

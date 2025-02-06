@@ -1,41 +1,52 @@
 import { RECORD } from '../types';
 
-const initialstate = {
-    record: [],
+interface Record {
+    id: string,
+    carregamento: string,
+    cidade: string,
+    valor: string,
+    dataEntrega: string,
+    observacao: string,
+
+}
+
+interface RecordState {
+    records: Record[];
+}
+
+const initialstate: RecordState = {
+    records: [],
 };
 
 type Action = {
     type: string,
-    payload?: any
+    payload?: Record
 }
 
-const record = (state: any = initialstate, action: Action) => {
-    console.log(action)
-    console.log('aqui, ' + action.type)
+const record = (state = initialstate, action: Action): RecordState => {
     switch (action.type) {
         case RECORD.ADD:
-            return Object.assign({}, state, {
-                record: action.payload,
-            });
-        case RECORD.READ:
-            return state;
+            return {
+                ...state,
+                records: [...state.records, action.payload!],
+            };
+
 
         case RECORD.UPDATE:
             return {
                 ...state,
-                registro: state.registro.map((item: any) =>
-                    item.id === action.payload.id ? action.payload : item
+                records: state.records.map((item) =>
+                    item.id === action.payload?.id ? action.payload : item
                 ),
             };
 
-        case RECORD.DELETE:
+        case RECORD.REMOVE:
             return {
                 ...state,
-                registro: state.registro.filter((item: any) => item.id !== action.payload.id),
+                records: state.records.filter((item) => item.id !== action.payload?.id),
             };
 
         default:
-            console.log('entrou errado')
             return state;
     }
 };

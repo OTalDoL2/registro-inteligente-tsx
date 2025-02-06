@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 interface Props {
     label: string; // Texto do botão
     func: () => void; // tipagem utilizada para funções
-    buttonType?: boolean; // Propriedade opcional para definir o tipo do botão
+    buttonType?: string; // Propriedade opcional para definir o tipo do botão
 }
 
 export default function Button({ label, func, buttonType }: Props) {
@@ -22,13 +22,14 @@ export default function Button({ label, func, buttonType }: Props) {
 
 
 const ButtonComponent = styled.TouchableOpacity<Props>`
-    height: 50;
-    width: 120;
+    height: ${(props: Props) => (props.buttonType == 'Card' ? '40' : '50')};
+    width: ${(props: Props) => (props.buttonType == 'Card' ? '60' : '120')};
     textAlign: center;
     backgroundColor: blue;
     justifyContent: center;
     borderRadius: 5px;
-    marginLeft: ${(props: Props) => (props.buttonType ? '0' : '150')};
+    marginTop: ${(props: Props) => (props.buttonType == 'Card' ? '30' : '0')};
+    marginLeft: ${(props: Props) => (props.buttonType == 'RecordButton' ? '150' : '0')};
 `
 
 const Label = styled.Text`
