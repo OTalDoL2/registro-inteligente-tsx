@@ -3,10 +3,10 @@ import styled from "styled-components/native";
 
 
 interface Props {
-    label: string; // Texto do botão
-    setValue: any; // Propriedade opcional para definir o tipo do botão
-    value: any; // tipagem utilizada para funções
-    size?: number; // Propriedade opcional para definir o tipo do botão
+    label: string; 
+    setValue: any; 
+    value: any; 
+    size?: number; 
 }
 
 export default function Input({ label, value, setValue, size = 200 }: Props) {

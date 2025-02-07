@@ -1,9 +1,8 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import { AppState } from "@/store";
+import generatePdf from "@/scripts/struct_pdf";
 import { recordAction } from "@/store/actions";
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/native";
 
@@ -13,8 +12,8 @@ export default function Register() {
   const [valor, setValor] = useState<String>('');
   const [dataEntrega, setDataEntrega] = useState<String>('');
   const [observacao, setObservacao] = useState<String>('');
-  const [mesInicial, setMesInicial] = useState<String>('');
-  const [mesFinal, setMesFinal] = useState<String>('');
+  const [initialMonth, setInitialMonth] = useState<string>('');
+  const [endMonth, setEndMonth] = useState<string>('');
 
   const dispatch = useDispatch();
 
@@ -25,10 +24,12 @@ export default function Register() {
     setObservacao('')
     setValor('')
   }
-
-  const showData = () => {
-    console.log(useSelector((state: AppState) => state.record))
-    console.log(dispatch(recordAction.readRecords()))
+  
+  const records = useSelector((state: any) => state.record.records);
+  const generate = async() => {
+    console.log('ue')
+    await generatePdf(records, initialMonth, endMonth)
+    console.log('pq n pegou?')
   }
 
   const saveRecords = () => {
@@ -40,7 +41,7 @@ export default function Register() {
       dataEntrega,
       observacao
     }));
-    cleanInputs()
+    cleanInputs();
   }
 
   return (
@@ -54,14 +55,13 @@ export default function Register() {
           <Input label='Observações' value={observacao} setValue={setObservacao} />
         </InputFields>
         <Line>
-          <Input size={120} label='Mês Inicial' value={mesInicial} setValue={setMesInicial} />
-          <Input size={120} label='Mês Final' value={mesFinal} setValue={setMesFinal} />
+          <Input size={120} label='Mês Inicial' value={initialMonth} setValue={setInitialMonth} />
+          <Input size={120} label='Mês Final' value={endMonth} setValue={setEndMonth} />
         </Line>
-        <Button label="Salvar" func={saveRecords} />
-        <Button label="Mostra" func={showData} />
-        {/* <Line>
-      <Button label="Gerar PDF" func={generatePdf} />
-    </Line> */}
+        <Line>
+          <Button label="Salvar" func={saveRecords} />
+          <Button label="Gerar PDF" func={generate} />
+        </Line>
       </Box>
     </Container>
   );
@@ -73,7 +73,7 @@ export const Container = styled.View`
     backgroundColor: 'aliceblue';
     alignItems: center;
     justifyContent: center;
-`
+`;
 
 export const Box = styled.View`
     width: 300;
@@ -81,7 +81,7 @@ export const Box = styled.View`
     alignItems: center;
     justifyContent: center;
     justifyContent: space-around;
-`
+`;
 
 export const Line = styled.View`
     flexDirection: row;
@@ -89,11 +89,10 @@ export const Line = styled.View`
     paddingTop: 10;
     paddingBottom: 10;
     width: 300;
-`
+`;
 
 export const InputFields = styled.View`
     justifyContent: space-around;
     paddingTop: 2;
     paddingBottom: 2;
-`
-
+`;

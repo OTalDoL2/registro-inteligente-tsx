@@ -1,15 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RECORD } from '../types';
+import Record from '@/interface/Record';
 
-interface Record {
-    id: string,
-    carregamento: string,
-    cidade: string,
-    valor: string,
-    dataEntrega: string,
-    observacao: string,
-
-}
 
 interface RecordState {
     records: Record[];
@@ -41,6 +33,9 @@ const record = (state = initialstate, action: Action): RecordState => {
                     item.id === action.payload?.id ? action.payload : item
                 ),
             };
+
+        case RECORD.READ:
+            return state;
 
         case RECORD.REMOVE:
             return {

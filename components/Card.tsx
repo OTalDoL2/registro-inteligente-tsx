@@ -1,13 +1,11 @@
 import { View } from "react-native";
 import Button from "./Button";
-import { RouteProp, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { recordAction } from "@/store/actions";
 import styled from "styled-components/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "@/app/RootStackParamList";
-
-// import { ButtonsRow, CardInfo, Container, Text } from "./styles";
 
 interface Props {
     item: any;
@@ -39,14 +37,8 @@ export default function Card({ item }: Props) {
                         {item.dataEntrega}
                     </Text>
                 </View>
-
-
-
-
                 <Text style={{ fontSize: 18 }}>{item.valor}</Text>
-
                 <Text style={{ width: '50%' }}>{item.observacao}</Text>
-
             </CardInfo>
             <ButtonsRow >
                 <Button buttonType="Card" func={() => navigation.navigate("Edit", { item })} label="Editar" />
@@ -61,7 +53,7 @@ export default function Card({ item }: Props) {
 export const Text = styled.Text`
     justifyContent: center;
     alignItems: center;
-    `
+    `;
 
 export const Container = styled.View`
     backgroundColor: #ffffff;
@@ -72,9 +64,7 @@ export const Container = styled.View`
     marginTop: 10;
     padding: 16px;
     borderRadius: 24px;
-    `
-
-
+    `;
 
 export const ButtonsRow = styled.View`
     justifyContent: center;
@@ -82,10 +72,10 @@ export const ButtonsRow = styled.View`
     width: 100%;
     flexDirection: row;
     justifyContent: space-around;
-    `
+    `;
 
 export const CardInfo = styled.View`
     width: 100%;
     justifyContent: center;
     alignItems: center;
-    `
+    `;

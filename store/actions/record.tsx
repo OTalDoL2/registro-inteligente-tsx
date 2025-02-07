@@ -15,7 +15,7 @@ const removeRecord = (payload: any) => ({
     payload,
 });
 
-const readRecords = () => ({
+const readRecords = (payload: any) => ({
     type: RECORD.READ,
 });
 

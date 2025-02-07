@@ -11,7 +11,6 @@ export default function Home() {
   const records = useSelector((state: any) => state.record.records);
 
   return (
-
     <Container>
       <Box>
         <List
@@ -21,7 +20,7 @@ export default function Home() {
             <Card item={item} />
           )}
         />
-        <Button label="Registrar" func={() => navigation.navigate('Register')} buttonType="RecordButton" />
+        <Button label="Registrar" func={() => navigation.navigate('Register')} buttonType="Record" />
       </Box>
     </Container>
   );

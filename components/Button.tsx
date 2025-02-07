@@ -1,5 +1,4 @@
 import { View } from "react-native";
-import { Text, TouchableOpacity } from 'react-native';
 import styled from "styled-components/native";
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 export default function Button({ label, func, buttonType }: Props) {
     return (
         <View>
-            <ButtonComponent primary={buttonType} onPress={func}>
+            <ButtonComponent buttonClass={buttonType} onPress={func}>
                 <Label>
                     {label}
                 </Label>
@@ -20,16 +19,14 @@ export default function Button({ label, func, buttonType }: Props) {
     );
 }
 
-
-const ButtonComponent = styled.TouchableOpacity<Props>`
-    height: ${(props: Props) => (props.buttonType == 'Card' ? '40' : '50')};
-    width: ${(props: Props) => (props.buttonType == 'Card' ? '60' : '120')};
-    textAlign: center;
+const ButtonComponent = styled.TouchableOpacity<{buttonClass?: string}>`
+    height: ${(props:any) => (props.buttonClass == 'Card' ? 40 : 50)};
+    width: ${(props:any) => (props.buttonClass == 'Card' ? 60 : 120)};
+    marginTop: ${(props:any) => (props.buttonClass == 'Card' ? 30 : 0)};
+    marginLeft: ${(props:any) => (props.buttonClass == 'Record' ? 150 : 0)};
     backgroundColor: blue;
     justifyContent: center;
     borderRadius: 5px;
-    marginTop: ${(props: Props) => (props.buttonType == 'Card' ? '30' : '0')};
-    marginLeft: ${(props: Props) => (props.buttonType == 'RecordButton' ? '150' : '0')};
 `
 
 const Label = styled.Text`
