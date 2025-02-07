@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RECORD } from '../types';
 
 interface Record {
@@ -24,6 +25,7 @@ type Action = {
 }
 
 const record = (state = initialstate, action: Action): RecordState => {
+
     switch (action.type) {
         case RECORD.ADD:
             return {

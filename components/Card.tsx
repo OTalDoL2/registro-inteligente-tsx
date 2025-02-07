@@ -17,9 +17,10 @@ export default function Card({ item }: Props) {
     const dispatch = useDispatch();
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-    const handleRemove = (id: string) => {
-        dispatch(recordAction.removeRecord(id));
+    const handleRemove = (item: Object) => {
+        dispatch(recordAction.removeRecord(item));
     };
+
     return (
         <Container>
             <CardInfo>
@@ -49,7 +50,7 @@ export default function Card({ item }: Props) {
             </CardInfo>
             <ButtonsRow >
                 <Button buttonType="Card" func={() => navigation.navigate("Edit", { item })} label="Editar" />
-                <Button buttonType="Card" label='Deletar' func={() => handleRemove(item.id)} />
+                <Button buttonType="Card" label='Deletar' func={() => handleRemove(item)} />
             </ButtonsRow>
         </Container>
     );
@@ -61,7 +62,7 @@ export const Text = styled.Text`
     justifyContent: center;
     alignItems: center;
     `
-    
+
 export const Container = styled.View`
     backgroundColor: #ffffff;
     borderWidth: 1.5px;
@@ -72,8 +73,8 @@ export const Container = styled.View`
     padding: 16px;
     borderRadius: 24px;
     `
-    
-    
+
+
 
 export const ButtonsRow = styled.View`
     justifyContent: center;

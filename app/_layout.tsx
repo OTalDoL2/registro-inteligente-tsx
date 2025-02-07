@@ -4,7 +4,8 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import store from '@/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from '@/store';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -41,12 +42,13 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <ThemeProvider value={DefaultTheme}>
-       
+        <PersistGate persistor={persistor}>
           <Stack.Navigator>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Edit" component={Edit} />
             <Stack.Screen name="Register" component={Register} />
           </Stack.Navigator>
+        </PersistGate>
       </ThemeProvider>
       <StatusBar style="auto" />
     </Provider>
